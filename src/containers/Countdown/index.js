@@ -21,7 +21,7 @@ export default function Countdown() {
     const value = count - 1;
     setCount(value);
 
-    if (value === 0) {
+    if (value < 1) {
       setRunning(false);
       clearInterval(interval.current);
       new Audio(ClockSound).play();
