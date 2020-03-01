@@ -41,10 +41,10 @@ export default function Countdown() {
   );
 
   function handleStart() {
-    const value = inputRef.current.value;
-    if (value < 1 || value > 5999) return;
+    const value = Math.round(inputRef.current.value);
+    if (value < 1 || value > 3660) return;
 
-    setCount(value);
+    setCount(value * 60);
     setRunning(true);
 
     clearInterval(interval.current);
