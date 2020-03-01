@@ -12,9 +12,10 @@ function getForeground({ color, active }) {
 }
 
 export const Container = styled.button`
+  border-radius: 3px;
   background: ${props => getBackground(props)};
   color: ${props => getForeground(props)};
-  border: 1px solid ${props => (props.color === "primary" ? "#6eb6a2" : "#000")};
+  border: 1px solid ${props => (props.color === "primary" ? "#6eb6a2" : "#999")};
   font-weight: 400;
   margin: 5px;
   outline: none;

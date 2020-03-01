@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import InputNumber from "../../components/InputNumber";
 import PlayButton from "../../components/PlayButton";
 import Time from "../../components/Time";
+import ClockSound from "../../assets/clock.mp3";
 import { Container } from "./styles";
 
 export default function Countdown() {
@@ -23,6 +24,7 @@ export default function Countdown() {
     if (value === 0) {
       setRunning(false);
       clearInterval(interval.current);
+      new Audio(ClockSound).play();
     }
   };
 
@@ -33,9 +35,14 @@ export default function Countdown() {
     return `${minutes}:${seconds}`;
   }, [count]);
 
+  const half = useMemo(
+    () => inputRef.current && count > 0 && count <= inputRef.current.value / 2,
+    [count]
+  );
+
   function handleStart() {
     const value = inputRef.current.value;
-    if (value < 1) return;
+    if (value < 1 || value > 5999) return;
 
     setCount(value);
     setRunning(true);
@@ -58,9 +65,7 @@ export default function Countdown() {
       </header>
       <section>
         {count === 0 && "Time’s up!"}
-        {count <= inputRef.current / 2 &&
-          count > 0 &&
-          "More than a halfway there!"}
+        {half && "More than a halfway there!"}
       </section>
       <main>
         <Time time={time} playing={running}>
