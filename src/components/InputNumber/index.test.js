@@ -5,9 +5,9 @@ import InputNumber from "./index";
 
 test("renders single input", () => {
   const { getByPlaceholderText } = render(
-    <InputNumber placeholder="(min)" innerRef={null} />
+    <InputNumber placeholder="(Min)" innerRef={null} />
   );
-  const node = getByPlaceholderText("(min)");
+  const node = getByPlaceholderText("(Min)");
   expect(node).toBeInTheDocument();
 
   node.value = "3";
@@ -18,9 +18,9 @@ test("renders single input", () => {
 
 test("shold accept values bellow 6000", () => {
   const { getByPlaceholderText } = render(
-    <InputNumber placeholder="(min)" innerRef={null} />
+    <InputNumber placeholder="(Min)" innerRef={null} />
   );
-  const node = getByPlaceholderText("(min)");
+  const node = getByPlaceholderText("(Min)");
 
   node.value = "3";
   ReactTestUtils.Simulate.change(node);
