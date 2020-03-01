@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 
 function getBackground({ color, active }) {
   if (color === "primary") return "#6eb6a2";
-  if (active) return "#777";
+  if (active) return "#6D757D";
   return "#fff";
 }
 function getForeground({ color, active }) {
@@ -22,6 +22,12 @@ export const Container = styled.button`
   min-width: 60px;
   padding: 8px 10px;
   cursor: pointer;
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem
+      ${props =>
+        transparentize(0.75, props.color === "primary" ? "#6eb6a2" : "#999")};
+  }
   :hover {
     background: ${props => darken(0.1, getBackground(props))};
   }

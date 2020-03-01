@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Container } from "./styles";
 
@@ -12,3 +13,8 @@ export default function Time({ time, playing }) {
     </Container>
   );
 }
+
+Time.propTypes = {
+  time: PropTypes.string.isRequired,
+  playing: PropTypes.bool.isRequired
+};
